@@ -55,9 +55,9 @@ foreach ($data as $location => $locationData) {
 </head>
 <body style="height: 100%; margin: 0;">
   <canvas id="chart" style="width: 100%; height: 100%;"></canvas>
-  <script src="node_modules/moment/min/moment.min.js"></script>
-  <script src="node_modules/chart.js/dist/Chart.min.js"></script>
-  <script src="node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
+  <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
+  <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="/cliffs-tracker/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
   <script>
       var ctx = document.getElementById('chart');
       var myLineChart = new Chart(ctx, {

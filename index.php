@@ -123,7 +123,7 @@ $db = new PDO('sqlite:db.sqlite');
         $day_end = mktime(24, 0, 0, $month, $day, $year);
         $valid = $db->query("SELECT COUNT(*) FROM data WHERE time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll()[0][0];
 
-        if ($valid) {?> <td class="<?php echo $class; ?>"><a href="day.php?year=<?php echo $year; ?>&month=<?php echo $month; ?>&day=<?php echo $day; ?>"><?php echo $day; ?></a></td> <?php } else {?> <td class="<?php echo $class; ?>"><?php echo $day; ?></td> <?php }
+        if ($valid) {?> <td class="<?php echo $class; ?>"><a href="/cliffs-tracker/<?php echo $year; ?>/<?php echo $month; ?>/<?php echo $day; ?>"><?php echo $day; ?></a></td> <?php } else {?> <td class="<?php echo $class; ?>"><?php echo $day; ?></td> <?php }
 
         if ($pos == 0) {
             echo '</tr><tr>';
