@@ -129,8 +129,13 @@ $db = new PDO('sqlite:db.sqlite');
         $class .= ($pos == 0) ? ' sun' : '';
 
         $day_start = mktime(0, 0, 0, $month, $day, $year);
-        $day_end = mktime(24, 0, 0, $month, $day, $year);
-        $valid = $db->query("SELECT COUNT(*) FROM data WHERE time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll()[0][0];
+        if ($day_start < mktime(0, 0, 0, 9, 7, 2020) || $day_start > time()) {
+            $valid = false;
+        } else {
+            // $day_end = mktime(24, 0, 0, $month, $day, $year);
+            // $valid = $db->query("SELECT COUNT(*) FROM data WHERE time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll()[0][0];
+            $valid = true;
+        }
 
         if ($valid) {?> <td class="<?php echo $class; ?>"><a href="/cliffs-tracker/<?php echo $year; ?>/<?php echo $month; ?>/<?php echo $day; ?>"><?php echo $day; ?></a></td> <?php } else {?> <td class="<?php echo $class; ?>"><?php echo $day; ?></td> <?php }
 
