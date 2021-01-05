@@ -13,16 +13,13 @@ $db->exec('CREATE TABLE IF NOT EXISTS data (
     UNIQUE(location, time)
 )');
 
-
-
 while (true) {
+    if (date('G') < 6) {
+        sleep(30);
+        continue;
+    }
 
-
-
-	if (date('G') < 6) {
-		sleep(30);
-		continue;
-	}
+    $month = date('n');
 
     $src = file_get_contents('https://portal.rockgympro.com/portal/public/a74dd6bfe28553eba4fca4ab9510e42f/occupancy?&iframeid=occupancyCounter&fId=1214');
 
@@ -38,6 +35,9 @@ while (true) {
     $data = json_decode($data);
 
     foreach ($data as $key => $val) {
+        if ($key == 'DUM' && ($month == 12 || $month == 1 || $month == 2)) {
+            continue;
+        }
         preg_match('/\((.*)\)/', $val->lastUpdate, $time);
         $time = strtotime($time[1]);
         if ($time > time() + 60) {
@@ -50,7 +50,4 @@ while (true) {
     }
 
     sleep(30);
-
-
-
 }
