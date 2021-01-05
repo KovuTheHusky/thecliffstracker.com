@@ -9,6 +9,7 @@ if (isset($_GET['year'])) {
 }
 
 $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+$current_year = date('Y');
 $current_month = date('n');
 $current_day = date('d');
 $month = 0;
@@ -79,7 +80,15 @@ $db = new PDO('sqlite:db.sqlite');
 </head>
 <body style="height: 100%; margin: 0;">
   <table class="calendar">
-    <th colspan="4" class="year"><?php echo $year; ?></th>
+    <th colspan="4" class="year">
+<?php if ($year > 2020) { ?>
+      <a href="/cliffs-tracker/<?php echo $year - 1; ?>">&lt;</a>
+<?php } ?>
+      <?php echo $year; ?>
+<?php if ($year < $current_year) { ?>
+      <a href="/cliffs-tracker/<?php echo $year + 1; ?>">&gt;</a>
+<?php } ?>
+    </th>
 <?php for ($row = 1; $row <= 3; $row++) { ?>
     <tr>
 <?php for ($column = 1; $column <= 4; $column++) { ?>
@@ -115,7 +124,7 @@ $db = new PDO('sqlite:db.sqlite');
 
     for ($day = 1; $day <= $month_days; $day++) {
         $pos = ($day + $first_day_in_month - 1) % 7;
-        $class = (($day == $current_day) && ($month == $current_month)) ? 'today' : 'day';
+        $class = (($day == $current_day) && ($month == $current_month) && ($year == $current_year)) ? 'today' : 'day';
         $class .= ($pos == 6) ? ' sat' : '';
         $class .= ($pos == 0) ? ' sun' : '';
 
