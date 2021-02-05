@@ -18,7 +18,7 @@ $db = new PDO('sqlite:db.sqlite');
 
 ?>
 <!doctype html>
-<html lang="en" style="height: 100%;">
+<html lang="en" style="height: 100%; margin: 0; padding: 0;">
 <head>
   <meta charset="utf-8">
   <title>Cliffs Tracker</title>
@@ -78,7 +78,7 @@ $db = new PDO('sqlite:db.sqlite');
 
   </style>
 </head>
-<body style="height: 100%; margin: 0;">
+<body style="height: 100%; margin: 0; padding: 0;">
   <table class="calendar">
     <th colspan="4" class="year">
 <?php if ($year > 2020) { ?>

@@ -19,6 +19,9 @@ if ($day_start == mktime(6, 0, 0)) {
     $today = false;
 }
 
+$yesterday = $day_start - 86400;
+$tomorrow = $day_start + 86400;
+
 $db = new PDO('sqlite:db.sqlite');
 
 if (isset($_GET['location'])) {
@@ -48,13 +51,25 @@ foreach ($data as $location => $locationData) {
 
 ?>
 <!doctype html>
-<html lang="en" style="height: 100%;">
+<html lang="en" style="height: 100%; margin: 0; padding: 0;">
 <head>
   <meta charset="utf-8">
   <title>Cliffs Tracker</title>
 </head>
-<body style="height: 100%; margin: 0;">
-  <canvas id="chart" style="width: 100%; height: 100%;"></canvas>
+<body style="height: 100%; margin: 0; padding: 0; overflow: hidden;">
+<h1 style="text-align: center; margin: 0; padding: 0;">
+<?php if (!($year == 2020 && $month == 9 && $day == 7)) { ?>
+  <a href="/cliffs-tracker/<?php echo date('Y/n/j', $yesterday); ?>">&lt;</a>
+<?php } ?>
+  &nbsp;&nbsp;
+  <?php echo date ('D, j M, ', $day_start); ?>
+  <a href="/cliffs-tracker/<?php echo date('Y'); ?>"><?php echo date('Y'); ?></a>
+  &nbsp;&nbsp;
+<?php if (!$today) { ?>
+  <a href="/cliffs-tracker/<?php echo date('Y/n/j', $tomorrow); ?>">&gt;</a>
+<?php } ?>
+</h1>
+  <canvas id="chart" style="width: 100%; height: calc(100% - 2em);"></canvas>
   <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
