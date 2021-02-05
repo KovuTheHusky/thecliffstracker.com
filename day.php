@@ -63,7 +63,7 @@ foreach ($data as $location => $locationData) {
 <?php } ?>
   &nbsp;&nbsp;
   <?php echo date ('D, j M, ', $day_start); ?>
-  <a href="/cliffs-tracker/<?php echo date('Y'); ?>"><?php echo date('Y'); ?></a>
+  <a href="/cliffs-tracker/<?php echo date('Y', $day_start); ?>"><?php echo date('Y', $day_start); ?></a>
   &nbsp;&nbsp;
 <?php if (!$today) { ?>
   <a href="/cliffs-tracker/<?php echo date('Y/n/j', $tomorrow); ?>">&gt;</a>
