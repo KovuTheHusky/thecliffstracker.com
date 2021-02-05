@@ -100,30 +100,24 @@ $db = new PDO('sqlite:db.sqlite');
     $first_day_in_month = date('w', mktime(0, 0, 0, $month, 1, $year));
     $month_days = date('t', mktime(0, 0, 0, $month, 1, $year));
 
-    // in PHP, Sunday is the first day in the week with number zero (0)
-    // to make our calendar works we will change this to (7)
-    if ($first_day_in_month == 0) {
-        $first_day_in_month = 7;
-    }
-
     ?>
         <table>
           <th colspan="7"><?php echo $months[$month - 1]; ?></th>
           <tr class="days">
+            <td class="sun">Su</td>
             <td>Mo</td>
             <td>Tu</td>
             <td>We</td>
             <td>Th</td>
             <td>Fr</td>
             <td class="sat">Sa</td>
-            <td class="sun">Su</td>
           </tr>
           <tr>
 <?php
-    for ($i = 1; $i < $first_day_in_month; $i++) {?> <td> </td> <?php }
+    for ($i = 1; $i <= $first_day_in_month; $i++) {?> <td> </td> <?php }
 
     for ($day = 1; $day <= $month_days; $day++) {
-        $pos = ($day + $first_day_in_month - 1) % 7;
+        $pos = ($day + $first_day_in_month) % 7;
         $class = (($day == $current_day) && ($month == $current_month) && ($year == $current_year)) ? 'today' : 'day';
         $class .= ($pos == 6) ? ' sat' : '';
         $class .= ($pos == 0) ? ' sun' : '';
