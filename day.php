@@ -78,7 +78,7 @@ foreach ($data as $location => $locationData) {
       var myLineChart = new Chart(ctx, {
           type: 'line',
           labels: [
-<?php for ($i = 0; $i <= 14; ++$i) { ?>
+<?php for ($i = 0; $i <= 18; ++$i) { ?>
               new Date('<?php echo date('r', $day_start + $i * 3600); ?>'),
 <?php } ?>
           ],

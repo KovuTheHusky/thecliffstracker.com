@@ -44,15 +44,12 @@ foreach($locations as $location) {
 }
 
 foreach ($averages as $loc => $val) {
-    for ($i = 0; $i < 24; ++$i) {
-        $dt = date('r', mktime($i));
+    for ($i = 6; $i < 24; ++$i) {
+        $dt = date('r', mktime($i, 30, 0));
         $data[$loc]['data'][] = "{x: new Date('{$dt}'), y: {$val[$i]}}";
         $data[$loc]['labels'][] = "'{$dt}'";
     }
 }
-
-// echo '<pre>';
-// print_r($averages);
 
 foreach ($data as $location => $locationData) {
     $data[$location]['data'] =  implode(',', $data[$location]['data']);
@@ -68,7 +65,12 @@ foreach ($data as $location => $locationData) {
 </head>
 <body style="height: 100%; margin: 0; padding: 0; overflow: hidden;">
 <h1 style="text-align: center; margin: 0; padding: 0;">
+  <a href="/cliffs-tracker/average/<?php echo $weekday - 1 < 0 ? 6 : $weekday - 1; ?>">&lt;</a>
+  &nbsp;&nbsp;
   <?php echo date ('D', $start); ?>
+  &nbsp;&nbsp;
+  <a href="/cliffs-tracker/average/<?php echo $weekday + 1 > 6 ? 0 : $weekday + 1; ?>">&gt;</a>
+  &nbsp;&nbsp;
   <a href="/cliffs-tracker">Home</a>
 </h1>
   <canvas id="chart" style="width: 100%; height: calc(100% - 2em);"></canvas>
@@ -80,7 +82,7 @@ foreach ($data as $location => $locationData) {
       var myLineChart = new Chart(ctx, {
           type: 'line',
           labels: [
-<?php for ($i = 0; $i <= 14; ++$i) { ?>
+<?php for ($i = 0; $i <= 18; ++$i) { ?>
               new Date('<?php echo date('r', $start + $i * 3600); ?>'),
 <?php } ?>
           ],
@@ -90,7 +92,9 @@ foreach ($data as $location => $locationData) {
                   {
                       label: 'DUMBO',
                       data: [
-                          <?php echo $data['DUM']['data']; ?>
+                          {x: new Date('<?php echo date('r', mktime(6, 0, 0)); ?>'), y: 0},
+                          <?php echo $data['DUM']['data']; ?>,
+                          {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(255, 0, 0)',
                       backgroundColor: 'rgba(255, 0, 0, 0.1)'
@@ -100,7 +104,9 @@ foreach ($data as $location => $locationData) {
                   {
                       label: 'LIC',
                       data: [
-                          <?php echo $data['LIC']['data']; ?>
+                          {x: new Date('<?php echo date('r', mktime(6, 0, 0)); ?>'), y: 0},
+                          <?php echo $data['LIC']['data']; ?>,
+                          {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(0, 255, 0)',
                       backgroundColor: 'rgba(0, 255, 0, 0.1)'
@@ -110,7 +116,9 @@ foreach ($data as $location => $locationData) {
                   {
                       label: 'Valhalla',
                       data: [
-                          <?php echo $data['VAL']['data']; ?>
+                          {x: new Date('<?php echo date('r', mktime(6, 0, 0)); ?>'), y: 0},
+                          <?php echo $data['VAL']['data']; ?>,
+                          {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(255, 165, 0)',
                       backgroundColor: 'rgba(255, 165, 0, 0.1)'
@@ -120,7 +128,9 @@ foreach ($data as $location => $locationData) {
                   {
                       label: 'Callowhill',
                       data: [
-                          <?php echo $data['CAL']['data']; ?>
+                          {x: new Date('<?php echo date('r', mktime(6, 0, 0)); ?>'), y: 0},
+                          <?php echo $data['CAL']['data']; ?>,
+                          {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(0, 0, 255)',
                       backgroundColor: 'rgba(0, 0, 255, 0.1)'
