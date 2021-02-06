@@ -68,7 +68,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
         $class .= ($pos == 0) ? ' sun' : '';
 
         $day_start = mktime(0, 0, 0, $month, $day, $year);
-        if ($day_start < mktime(0, 0, 0, 9, 7, 2020) || $day_start > time()) {
+        if ($day_start < mktime(0, 0, 0, 9, 7, 2020) || $day_start + 21600 > time()) {
             $valid = false;
         } else {
             // $day_end = mktime(24, 0, 0, $month, $day, $year);
