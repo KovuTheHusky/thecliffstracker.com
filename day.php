@@ -15,8 +15,10 @@ if (isset($_GET['year']) && isset($_GET['month'])  && isset($_GET['day'])) {
 
 if ($day_start == mktime(6, 0, 0)) {
     $today = true;
+    $page = 'today';
 } else {
     $today = false;
+    $page = 'browse';
 }
 
 $yesterday = $day_start - 86400;
@@ -49,24 +51,20 @@ foreach ($data as $location => $locationData) {
     $data[$location]['labels'] =  implode(',', $data[$location]['labels']);
 }
 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
+
 ?>
-<!doctype html>
-<html lang="en" style="height: 100%; margin: 0; padding: 0;">
-<head>
-  <meta charset="utf-8">
-  <title>Cliffs Tracker</title>
-</head>
-<body style="height: 100%; margin: 0; padding: 0; overflow: hidden;">
+
 <h1 style="text-align: center; margin: 0; padding: 0;">
 <?php if (!($year == 2020 && $month == 9 && $day == 7)) { ?>
-  <a href="/cliffs-tracker/<?php echo date('Y/n/j', $yesterday); ?>">&lt;</a>
+  <a href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $yesterday); ?>">&lt;</a>
 <?php } ?>
   &nbsp;&nbsp;
   <?php echo date ('D, j M ', $day_start); ?>
-  <a href="/cliffs-tracker/<?php echo date('Y', $day_start); ?>"><?php echo date('Y', $day_start); ?></a>
+  <a href="/cliffs-tracker/browse/<?php echo date('Y', $day_start); ?>"><?php echo date('Y', $day_start); ?></a>
   &nbsp;&nbsp;
 <?php if (!$today) { ?>
-  <a href="/cliffs-tracker/<?php echo date('Y/n/j', $tomorrow); ?>">&gt;</a>
+  <a href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $tomorrow); ?>">&gt;</a>
 <?php } ?>
 </h1>
   <canvas id="chart" style="width: 100%; height: calc(100% - 2em);"></canvas>

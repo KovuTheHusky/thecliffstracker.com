@@ -1,5 +1,7 @@
 <?php
 
+$page = 'average';
+
 date_default_timezone_set('America/New_York');
 
 $locations = array('DUM', 'LIC', 'VAL', 'CAL');
@@ -56,14 +58,9 @@ foreach ($data as $location => $locationData) {
     $data[$location]['labels'] =  implode(',', $data[$location]['labels']);
 }
 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
+
 ?>
-<!doctype html>
-<html lang="en" style="height: 100%; margin: 0; padding: 0;">
-<head>
-  <meta charset="utf-8">
-  <title>Cliffs Tracker</title>
-</head>
-<body style="height: 100%; margin: 0; padding: 0; overflow: hidden;">
 <h1 style="text-align: center; margin: 0; padding: 0;">
   <a href="/cliffs-tracker/average/<?php echo $weekday - 1 < 0 ? 6 : $weekday - 1; ?>">&lt;</a>
   &nbsp;&nbsp;
