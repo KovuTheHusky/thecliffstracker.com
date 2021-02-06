@@ -24,24 +24,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
 
 <nav aria-label="..." style="margin-top: 16px;">
   <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-    <li class="page-item"><a class="page-link" href="#">2020</a></li>
-    <li class="page-item active"><a class="page-link" href="#">2021</a></li>
-    <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
+    <li class="page-item<?php if ($year <= 2020) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo $year - 1; ?>">&laquo;</a></li>
+<?php for ($i = '2020'; $i <= date('Y'); ++$i) { ?>
+    <li class="page-item<?php if ($i == $year) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo $i; ?>"><?php echo $i; ?></a></li>
+<?php } ?>
+    <li class="page-item<?php if ($year >= date('Y')) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo $year + 1; ?>">&raquo;</a></li>
   </ul>
 </nav>
 
 
   <table class="calendar">
-    <th colspan="4" class="year">
-<?php if ($year > 2020) { ?>
-      <a href="/cliffs-tracker/browse/<?php echo $year - 1; ?>">&lt;</a>
-<?php } ?>
-      <?php echo $year; ?>
-<?php if ($year < $current_year) { ?>
-      <a href="/cliffs-tracker/browse/<?php echo $year + 1; ?>">&gt;</a>
-<?php } ?>
-    </th>
 <?php for ($row = 1; $row <= 3; $row++) { ?>
     <tr>
 <?php for ($column = 1; $column <= 4; $column++) { ?>

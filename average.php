@@ -61,15 +61,7 @@ foreach ($data as $location => $locationData) {
 require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
 
 ?>
-<h1 style="text-align: center; margin: 0; padding: 0;">
-  <a href="/cliffs-tracker/average/<?php echo $weekday - 1 < 0 ? 6 : $weekday - 1; ?>">&lt;</a>
-  &nbsp;&nbsp;
-  <?php echo date ('D', $start); ?>
-  &nbsp;&nbsp;
-  <a href="/cliffs-tracker/average/<?php echo $weekday + 1 > 6 ? 0 : $weekday + 1; ?>">&gt;</a>
-  &nbsp;&nbsp;
-  <a href="/cliffs-tracker">Home</a>
-</h1>
+
   <canvas id="chart" style="width: 100%; height: calc(100% - 2em);"></canvas>
   <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>

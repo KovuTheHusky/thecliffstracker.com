@@ -55,18 +55,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
 
 ?>
 
-<h1 style="text-align: center; margin: 0; padding: 0;">
-<?php if (!($year == 2020 && $month == 9 && $day == 7)) { ?>
-  <a href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $yesterday); ?>">&lt;</a>
+<nav aria-label="..." style="margin-top: 16px;">
+  <ul class="pagination justify-content-center">
+    <li class="page-item<?php if ($year == 2020 && $month == 9 && $day == 7) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $yesterday); ?>">&laquo;</a></li>
+<?php for ($i = $day_start - 172800; $i < $day_start; $i += 86400) { if ($i < mktime(6, 0, 0, 9, 7, 2020)) { continue; } ?>
+    <li class="page-item"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
 <?php } ?>
-  &nbsp;&nbsp;
-  <?php echo date ('D, j M ', $day_start); ?>
-  <a href="/cliffs-tracker/browse/<?php echo date('Y', $day_start); ?>"><?php echo date('Y', $day_start); ?></a>
-  &nbsp;&nbsp;
-<?php if (!$today) { ?>
-  <a href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $tomorrow); ?>">&gt;</a>
+    <li class="page-item active"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $day_start); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $day_start))), 0, 1) . ' ' . date('n/j', $day_start); ?></a></li>
+<?php for ($i = $day_start + 86400; $i <= $day_start + 172800 && $i <= mktime(6, 0, 0); $i += 86400) { ?>
+    <li class="page-item"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
 <?php } ?>
-</h1>
+    <li class="page-item<?php if ($today) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $tomorrow); ?>">&raquo;</a></li>
+  </ul>
+</nav>
+
   <canvas id="chart" style="width: 100%; height: calc(100% - 2em);"></canvas>
   <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
