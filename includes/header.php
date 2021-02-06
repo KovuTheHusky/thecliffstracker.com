@@ -64,8 +64,14 @@ if ($day_page) {
     }
 }
 
+if (date('G') < 6) {
+    $max = date('Y-m-d', mktime(6, 0, 0) - 86400);
+} else {
+    $max = date('Y-m-d');
+}
+
 ?>
-            <input type="date" class="form-control" aria-label="Date" aria-describedby="date-label" id="date" name="date" value="<?php echo $input; ?>" min="2020-09-07" max="<?php echo date('Y-m-d'); ?>">
+            <input type="date" class="form-control" aria-label="Date" aria-describedby="date-label" id="date" name="date" value="<?php echo $input; ?>" min="2020-09-07" max="<?php echo $max; ?>">
             <button class="btn btn-primary" id="date-label">
               <img src="/cliffs-tracker/node_modules/bootstrap-icons/icons/arrow-return-right.svg" style="filter: invert(1);">
             </button>
