@@ -62,7 +62,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
 
 ?>
 
-  <canvas id="chart" style="width: 100%; height: calc(100% - 2em);"></canvas>
+  <canvas id="chart" style="width: 100%; height: calc(100% - 56px);"></canvas>
   <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>

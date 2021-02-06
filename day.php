@@ -2,6 +2,8 @@
 
 date_default_timezone_set('America/New_York');
 
+$day_page = true;
+
 if (isset($_GET['year']) && isset($_GET['month'])  && isset($_GET['day'])) {
     $year = (int) $_GET['year'];
     $month = (int) $_GET['month'];
@@ -69,7 +71,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
   </ul>
 </nav>
 
-  <canvas id="chart" style="width: 100%; height: calc(100% - 2em);"></canvas>
+  <canvas id="chart" style="width: 100%; height: calc(100% - 126px);"></canvas>
   <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
