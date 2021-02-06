@@ -52,7 +52,20 @@
       <div>
         <form method="post" action="/cliffs-tracker/form">
           <div class="input-group flex-nowrap">
-            <input type="date" class="form-control" aria-label="Date" aria-describedby="date-label" id="date" name="date" value="<?php echo $day_page ? date('Y-m-d', $day_start) : date('Y-m-d'); ?>" min="2020-09-07" max="<?php echo date('Y-m-d'); ?>">
+<?php
+
+if ($day_page) {
+    $input = date('Y-m-d', $day_start);
+} else {
+    if (date('G') < 6) {
+        $input = date('Y-m-d', mktime(6, 0, 0) - 86400);
+    } else {
+        $input = date('Y-m-d');
+    }
+}
+
+?>
+            <input type="date" class="form-control" aria-label="Date" aria-describedby="date-label" id="date" name="date" value="<?php echo $input; ?>" min="2020-09-07" max="<?php echo date('Y-m-d'); ?>">
             <button class="btn btn-primary" id="date-label">
               <img src="/cliffs-tracker/node_modules/bootstrap-icons/icons/arrow-return-right.svg" style="filter: invert(1);">
             </button>
