@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <div>
         <a class="navbar-brand p-0" href="/cliffs-tracker">
-          <img src="/cliffs-tracker/assets/logo.svg" alt="Cliffs-Tracker" style="width: 32px; height: 32px;">
+          <img src="/cliffs-tracker/assets/logo.svg" alt="Cliffs-Tracker" title="Cliffs-Tracker" style="width: 32px; height: 32px;">
           <!-- <img src="/cliffs-tracker/node_modules/bootstrap-icons/icons/graph-up.svg" alt="Tracker" style="width: 32px; height: 32px;"> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link<?php if ($page == 'average') { echo ' active'; } ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Average
+              Averages
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item<?php if ($page == 'average' && $weekday == 0) { echo ' active'; } ?>" href="/cliffs-tracker/average/0">Sunday</a></li>
