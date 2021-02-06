@@ -11,8 +11,13 @@ if (isset($_GET['year']) && isset($_GET['month'])  && isset($_GET['day'])) {
     $day_start = mktime(6, 0, 0, $month, $day, $year);
     $day_end = mktime(24, 0, 0, $month, $day, $year);
 } else {
-    $day_start = mktime(6, 0, 0);
-    $day_end = mktime(24, 0, 0);
+    if (date('G') < 6) {
+        $day_start = mktime(6, 0, 0) - 86400;
+        $day_end = mktime(24, 0, 0) - 86400;
+    } else {
+        $day_start = mktime(6, 0, 0);
+        $day_end = mktime(24, 0, 0);
+    }
 }
 
 if ($day_start == mktime(6, 0, 0)) {
@@ -64,10 +69,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
     <li class="page-item"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
 <?php } ?>
     <li class="page-item active"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $day_start); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $day_start))), 0, 1) . ' ' . date('n/j', $day_start); ?></a></li>
-<?php for ($i = $day_start + 86400; $i <= $day_start + 172800 && $i <= mktime(6, 0, 0); $i += 86400) { ?>
+<?php for ($i = $day_start + 86400; $i <= $day_start + 172800 && $i < mktime(6, 0, 0); $i += 86400) { ?>
     <li class="page-item"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
 <?php } ?>
-    <li class="page-item<?php if ($today) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $tomorrow); ?>">&raquo;</a></li>
+    <li class="page-item<?php if ($today || $day_start + 86400 > time()) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $tomorrow); ?>">&raquo;</a></li>
   </ul>
 </nav>
 

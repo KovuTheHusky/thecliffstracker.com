@@ -128,7 +128,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
               ]
           },
           options: {
-<?php if (date('D') == date('D', $start)) { ?>
+<?php if (date('D') == date('D', $start) && date('G') >= 6) { ?>
               annotation: {
                   annotations: [
                       {
