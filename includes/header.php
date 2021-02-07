@@ -1,9 +1,59 @@
+<?php
+
+switch ($page) {
+    case 'today':
+        $title = 'Today | ';
+        break;
+    case 'browse':
+        if ($day_page) {
+            $title = substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $day_start))), 0, 1) . ' ' . date('n/j', $day_start) . ' | ' . $year . ' | Browse | ';
+        } else {
+            $title = $year . ' | Browse | ';
+        }
+        break;
+    case 'average':
+        switch ($weekday) {
+            case 0:
+                $wt = 'Sunday';
+                break;
+            case 1:
+                $wt = 'Monday';
+                break;
+            case 2:
+                $wt = 'Tuesday';
+                break;
+            case 3:
+                $wt = 'Wednesday';
+                break;
+            case 4:
+                $wt = 'Thursday';
+                break;
+            case 5:
+                $wt = 'Friday';
+                break;
+            case 6:
+                $wt = 'Saturday';
+                break;
+            default:
+                $wt = 'Unknown';
+                break;
+        }
+        $title = $wt . ' | Averages | ';
+        break;
+    case 'about':
+      $title = 'About | ';
+        break;
+    default:
+        $title = '';
+        break;
+}
+
+?>
 <!doctype html>
 <html lang="en" style="height: 100%; margin: 0; padding: 0;">
 <head>
   <meta charset="utf-8">
-  <title>Cliffs Tracker</title>
-  
+  <title><?php echo $title; ?>Cliffs Tracker</title>
   <link rel="stylesheet" href="/cliffs-tracker/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/cliffs-tracker/assets/main.css">
   <script src="/cliffs-tracker/node_modules/jquery/dist/jquery.min.js"></script>
