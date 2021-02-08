@@ -4,6 +4,6 @@ Occupancy tracker script and website for The Cliffs (DUMBO, Harlem, LIC, Valhall
 
 ## Links
 
-* Website: <https://aws.kovuthehusky.com/cliffs-tracker/>
+* Website: <https://aws.kovuthehusky.com/cliffs-tracker>
 * Issues: <https://github.com/KovuTheHusky/Cliffs-Tracker/issues>
 * Source: <https://github.com/KovuTheHusky/Cliffs-Tracker>
