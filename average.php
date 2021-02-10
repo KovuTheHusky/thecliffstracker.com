@@ -64,6 +64,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
 
 <nav aria-label="..." style="margin-top: 16px;">
   <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="/cliffs-tracker/average/<?php echo $weekday - 1 < 0 ? 6 : $weekday - 1; ?>">&laquo;</a></li>
     <li class="page-item<?php if ($weekday == 0) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/0">U</a></li>
     <li class="page-item<?php if ($weekday == 1) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/1">M</a></li>
     <li class="page-item<?php if ($weekday == 2) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/2">T</a></li>
@@ -71,6 +72,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
     <li class="page-item<?php if ($weekday == 4) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/4">R</a></li>
     <li class="page-item<?php if ($weekday == 5) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/5">F</a></li>
     <li class="page-item<?php if ($weekday == 6) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/6">S</a></li>
+    <li class="page-item"><a class="page-link" href="/cliffs-tracker/average/<?php echo $weekday + 1 > 6 ? 0 : $weekday + 1; ?>">&raquo;</a></li>
   </ul>
 </nav>
 
