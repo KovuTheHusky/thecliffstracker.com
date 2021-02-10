@@ -62,7 +62,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
 
 ?>
 
-  <canvas id="chart" style="width: 100%; height: calc(100% - 56px);"></canvas>
+<nav aria-label="..." style="margin-top: 16px;">
+  <div style="width: 100%; height: calc(100% - 126px);">
+    <canvas id="chart"></canvas>
+  </div>
   <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
   <script src="/cliffs-tracker/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
@@ -154,6 +157,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
                       hitRadius: 10
                   }
               },
+              responsive: true,
+              maintainAspectRatio: false,
               scales: {
                   xAxes: [{
                       type: 'time',
