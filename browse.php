@@ -50,7 +50,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
           <div class="row g-0 mt-1 mb-1">
             <div class="col" style="font-weight: bold;"><?php echo $months[$month - 1]; ?></div>
           </div>
-          <div class="days row g-0 mt-1 mb-1" style="font-weight: bold;">
+          <div class="days row g-0 mb-1" style="font-weight: bold;">
             <div class="sun col">U</div>
             <div class="col">M</div>
             <div class="col">T</div>
@@ -59,7 +59,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
             <div class="col">F</div>
             <div class="sat col">S</div>
           </div>
-          <div class="row g-0 mt-1 mb-1">
+          <div class="row g-0 mb-1">
 <?php
     for ($i = 1; $i <= $first_day_in_month; $i++) {?> <div class="col"> </div> <?php }
 
@@ -79,7 +79,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
         if ($valid) {?> <div class="col <?php echo $class; ?>"><a href="/cliffs-tracker/browse/<?php echo $year; ?>/<?php echo $month; ?>/<?php echo $day; ?>"><?php echo $day; ?></a></div> <?php } else {?> <div class="col <?php echo $class; ?>"><?php echo $day; ?></div> <?php }
 
         if ($pos == 0) {
-            echo '</div><div class="row g-0 mt-1 mb-1">';
+            echo '</div><div class="row g-0 mb-1">';
         }
 
     }

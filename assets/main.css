@@ -2,7 +2,12 @@
   text-align: center;
 }
 
+.day {
+  padding: 4px 0;
+}
+
 .today {
+  padding: 4px 0;
   background: #fd6d0d;
   color: #ffffff;
   border-radius: .25rem !important;
