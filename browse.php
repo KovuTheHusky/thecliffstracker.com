@@ -37,7 +37,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
 <?php for ($row = 1; $row <= 3; $row++) { ?>
   <div class="row">
 <?php for ($column = 1; $column <= 4; $column++) { ?>
-    <div class="col-lg mb-4">
+    <div class="col-lg" style="margin-bottom: 16px; padding-left: 12px; padding-right: 12px;">
       <div class="card" style="height: 100%;">
 <?php
 
