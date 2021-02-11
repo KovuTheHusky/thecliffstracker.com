@@ -67,7 +67,6 @@ switch ($page) {
       <div>
         <a class="navbar-brand p-0" href="/cliffs-tracker">
           <img src="/cliffs-tracker/assets/logo.svg" alt="Cliffs-Tracker" title="Cliffs-Tracker" style="width: 32px; height: 32px;">
-          <!-- <img src="/cliffs-tracker/node_modules/bootstrap-icons/icons/graph-up.svg" alt="Tracker" style="width: 32px; height: 32px;"> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

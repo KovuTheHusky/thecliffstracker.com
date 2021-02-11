@@ -1,52 +1,9 @@
 .calendar {
-  width: 100%;
-  height: 100%;
-}
-
-.calendar,
-.calendar table {
-  border: 0;
-  margin: 0;
-}
-
-.calendar,
-.calendar table,
-.calendar td {
   text-align: center;
 }
 
-.calendar .year {
-  font-family: Verdana;
-  font-size: 18pt;
-}
-
-.calendar .month {
-  width: 25%;
-  vertical-align: top;
-}
-
-.calendar .month table {
-  font-size: 12pt;
-  font-family: Verdana;
-  margin: auto;
-}
-
-.calendar .month th {
-  text-align: center;
-  font-size: 12pt;
-  font-family: Arial;
-}
-
-.calendar .month td {
-  font-size: 12pt;
-  font-family: Verdana;
-}
-
-.calendar .month .days td {
-  font-weight: bold;
-}
-
-.calendar .month .today {
-  background: #ff0000;
+.today {
+  background: #fd6d0d;
   color: #ffffff;
+  border-radius: .25rem !important;
 }
