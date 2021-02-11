@@ -53,6 +53,7 @@ switch ($page) {
 <html lang="en" style="height: 100%; margin: 0; padding: 0;">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $title; ?>Cliffs Tracker</title>
   <link rel="stylesheet" href="/cliffs-tracker/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/cliffs-tracker/assets/main.css">
