@@ -35,11 +35,18 @@ while (true) {
     $data = json_decode($data);
 
     foreach ($data as $key => $val) {
-        if ($key == 'DUM' && ($month == 12 || $month == 1 || $month == 2 || $month == 3)) {
+        if ($key == 'DUM' && ($month == 12 || $month == 1 || $month == 2 || $month == 3)) { // fast skip winter months for dumbo
             continue;
         }
         preg_match('/\((.*)\)/', $val->lastUpdate, $time);
         $time = strtotime($time[1]);
+        if ($key == 'DUM') { // slow skip partial months for dumbo
+            $closing = mktime(0, 0, 0, 11, 2, 2020);
+            $opening = mktime(0, 0, 0, 4, 19, 2021);
+            if ($time > $closing && $time < $opening) {
+                continue;
+            }
+        }
         if ($time > time() + 60) {
             continue; // we're at least a minute in the future, forget it
         }
