@@ -35,7 +35,7 @@ while (true) {
     $data = json_decode($data);
 
     foreach ($data as $key => $val) {
-        if ($key == 'DUM' && ($month == 12 || $month == 1 || $month == 2)) {
+        if ($key == 'DUM' && ($month == 12 || $month == 1 || $month == 2 || $month == 3)) {
             continue;
         }
         preg_match('/\((.*)\)/', $val->lastUpdate, $time);
