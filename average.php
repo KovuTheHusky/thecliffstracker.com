@@ -4,7 +4,7 @@ $page = 'average';
 
 date_default_timezone_set('America/New_York');
 
-$locations = array('DUM', 'LIC', 'VAL', 'CAL');
+$locations = array('DUM', 'HLM', 'LIC', 'VAL', 'CAL');
 
 $weekday = (int) $_GET['weekday'];
 $start = mktime(6, 0, 0, 9, 6 + $weekday, 2020);
@@ -105,6 +105,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
                       backgroundColor: 'rgba(255, 0, 0, 0.1)'
                   },
 <?php } ?>
+<?php if (isset($data['HLM']['data'])) { ?>
+                  {
+                      label: 'Harlem',
+                      data: [
+                          {x: new Date('<?php echo date('r', mktime(6, 0, 0)); ?>'), y: 0},
+                          <?php echo $data['HLM']['data']; ?>,
+                          {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
+                        ],
+                      borderColor: 'rgb(0, 255, 255)',
+                      backgroundColor: 'rgba(0, 255, 255, 0.1)'
+                  },
+<?php } ?>
 <?php if (isset($data['LIC']['data'])) { ?>
                   {
                       label: 'LIC',
@@ -137,8 +149,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
                           <?php echo $data['CAL']['data']; ?>,
                           {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
-                      borderColor: 'rgb(0, 0, 255)',
-                      backgroundColor: 'rgba(0, 0, 255, 0.1)'
+                      borderColor: 'rgb(255, 0, 255)',
+                      backgroundColor: 'rgba(255, 0, 255, 0.1)'
                   },
 <?php } ?>
               ]
