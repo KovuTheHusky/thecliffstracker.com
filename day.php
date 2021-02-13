@@ -38,9 +38,9 @@ if (isset($_GET['location'])) {
 }
 
 if (isset($location) && ($location == 'DUM' || $location == 'LIC' || $location == 'VAL' || $location == 'CAL')) {
-    $rows = $db->query("SELECT * FROM data WHERE location = '{$location}' AND time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll();
+    $rows = $db->query("SELECT * FROM data WHERE location = '{$location}' AND count > 0 AND time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll();
 } else {
-    $rows = $db->query("SELECT * FROM data WHERE time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll();
+    $rows = $db->query("SELECT * FROM data WHERE count > 0 AND time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll();
 }
 
 $capacity = 0;
