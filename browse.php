@@ -38,7 +38,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
   <div class="row">
 <?php for ($column = 1; $column <= 4; $column++) { ?>
     <div class="col-lg" style="margin-bottom: 16px; padding-left: 12px; padding-right: 12px;">
-      <div class="card" style="height: 100%;">
+      <div class="card" style="height: 100%; padding: 0 4px;">
 <?php
 
     $month++;
