@@ -20,7 +20,7 @@ if (isset($_GET['year']) && isset($_GET['month'])  && isset($_GET['day'])) {
     }
 }
 
-if ($day_start == mktime(6, 0, 0)) {
+if ($day_start == mktime(6, 0, 0) || (date('G') < 6 && $day_start == mktime(6, 0, 0) - 86400)) {
     $today = true;
     $page = 'today';
 } else {
