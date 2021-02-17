@@ -12,8 +12,6 @@ $end = $start + 64800;
 
 $db = new PDO('sqlite:db.sqlite');
 
-$capacity = 0;
-
 $accumulator = array();
 foreach ($locations as $location) {
     $accumulator[$location] = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -24,6 +22,15 @@ foreach ($locations as $location) {
     $counter[$location] = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 }
 
+$capacity = 170;
+$capacities = array(
+    'DUM' => 60,
+    'HLM' => 98,
+    'LIC' => 139,
+    'VAL' => 52,
+    'CAL' => 170
+);
+
 for ($low = $start; $low < time(); $low += 604800) {
     $high = $low + 64800;
     $rows = $db->query("SELECT * FROM data WHERE time BETWEEN {$low} AND {$high}")->fetchAll();
@@ -32,6 +39,7 @@ for ($low = $start; $low < time(); $low += 604800) {
         $hour = date('G', $row['time']);
         $accumulator[$location][$hour] += $row['count'];
         ++$counter[$location][$hour];
+        $capacities[$row['location']] = $row['capacity'];
         if ($row['capacity'] > $capacity) {
             $capacity = $row['capacity'];
         }
@@ -156,9 +164,79 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
               ]
           },
           options: {
-<?php if (date('D') == date('D', $start) && date('G') >= 6) { ?>
               annotation: {
                   annotations: [
+                      {
+                          id: 'dumbo',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['DUM']; ?>,
+                          borderColor: 'rgba(255, 0, 0, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(255, 0, 0)',
+                              content: 'DUMBO',
+                              enabled: true
+                          }
+                      },
+                      {
+                          id: 'harlem',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['HLM']; ?>,
+                          borderColor: 'rgba(0, 255, 255, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(0, 255, 255)',
+                              content: 'Harlem',
+                              enabled: true
+                          }
+                      },
+                      {
+                          id: 'lic',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['LIC']; ?>,
+                          borderColor: 'rgba(0, 255, 0, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(0, 255, 0)',
+                              content: 'LIC',
+                              enabled: true
+                          }
+                      },
+                      {
+                          id: 'valhalla',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['VAL']; ?>,
+                          borderColor: 'rgba(255, 165, 0, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(255, 165, 0)',
+                              content: 'Valhalla',
+                              enabled: true
+                          }
+                      },
+                      {
+                          id: 'callowhill',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['CAL']; ?>,
+                          borderColor: 'rgba(255, 0, 255, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(255, 0, 255)',
+                              content: 'Callowhill',
+                              enabled: true
+                          }
+                      },
+<?php if (date('D') == date('D', $start) && date('G') >= 6) { ?>
                       {
                           id: 'vline',
                           type: 'line',
@@ -173,9 +251,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
                               enabled: true
                           }
                       }
+<?php } ?>
                   ]
               },
-<?php } ?>
               elements: {
                   point: {
                       radius: 0,

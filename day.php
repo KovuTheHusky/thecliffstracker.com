@@ -43,11 +43,19 @@ if (isset($location) && ($location == 'DUM' || $location == 'LIC' || $location =
     $rows = $db->query("SELECT * FROM data WHERE count > 0 AND time > {$day_start} AND time < {$day_end} ORDER BY time ASC")->fetchAll();
 }
 
-$capacity = 0;
+$capacity = 170;
+$capacities = array(
+    'DUM' => 60,
+    'HLM' => 98,
+    'LIC' => 139,
+    'VAL' => 52,
+    'CAL' => 170
+);
 foreach($rows as $row) {
     $dt = date('r', $row['time']);
     $data[$row['location']]['data'][] = "{x: new Date('{$dt}'), y: {$row['count']}}";
     $data[$row['location']]['labels'][] = "'{$dt}'";
+    $capacities[$row['location']] = $row['capacity'];
     if ($row['capacity'] > $capacity) {
         $capacity = $row['capacity'];
     }
@@ -156,9 +164,89 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
               ]
           },
           options: {
-<?php if ($today) { ?>
               annotation: {
                   annotations: [
+<?php if (isset($data['DUM']['data'])) { ?>
+                      {
+                          id: 'dumbo',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['DUM']; ?>,
+                          borderColor: 'rgba(255, 0, 0, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(255, 0, 0)',
+                              content: 'DUMBO',
+                              enabled: true
+                          }
+                      },
+<?php } ?>
+<?php if (isset($data['HLM']['data'])) { ?>
+                      {
+                          id: 'harlem',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['HLM']; ?>,
+                          borderColor: 'rgba(0, 255, 255, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(0, 255, 255)',
+                              content: 'Harlem',
+                              enabled: true
+                          }
+                      },
+<?php } ?>
+<?php if (isset($data['LIC']['data'])) { ?>
+                      {
+                          id: 'lic',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['LIC']; ?>,
+                          borderColor: 'rgba(0, 255, 0, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(0, 255, 0)',
+                              content: 'LIC',
+                              enabled: true
+                          }
+                      },
+<?php } ?>
+<?php if (isset($data['VAL']['data'])) { ?>
+                      {
+                          id: 'valhalla',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['VAL']; ?>,
+                          borderColor: 'rgba(255, 165, 0, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(255, 165, 0)',
+                              content: 'Valhalla',
+                              enabled: true
+                          }
+                      },
+<?php } ?>
+<?php if (isset($data['CAL']['data'])) { ?>
+                      {
+                          id: 'callowhill',
+                          type: 'line',
+                          mode: 'horizontal',
+                          scaleID: 'y-axis-0',
+                          value: <?php echo $capacities['CAL']; ?>,
+                          borderColor: 'rgba(255, 0, 255, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(255, 0, 255)',
+                              content: 'Callowhill',
+                              enabled: true
+                          }
+                      },
+<?php } ?>
+<?php if ($today) { ?>
                       {
                           id: 'vline',
                           type: 'line',
@@ -173,9 +261,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
                               enabled: true
                           }
                       }
+<?php } ?>
                   ]
               },
-<?php } ?>
               elements: {
                   point: {
                       radius: 0,
