@@ -246,7 +246,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
                           }
                       },
 <?php } ?>
-<?php if ($today) { ?>
+<?php if ($today && date('G') >= 6) { ?>
                       {
                           id: 'vline',
                           type: 'line',
