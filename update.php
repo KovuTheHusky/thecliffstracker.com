@@ -1,5 +1,9 @@
 <?php
 
+if (php_sapi_name() != 'cli') {
+    exit;
+}
+
 date_default_timezone_set('America/New_York');
 
 //$db = new PDO('sqlite:db.sqlite');
