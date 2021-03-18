@@ -10,4 +10,4 @@ for ($i = 0; $i < count($date); ++$i) {
 
 $date = implode('/', $date);
 
-exit(header('Location: /cliffs-tracker/browse/' . $date));
+exit(header('Location: /browse/' . $date));

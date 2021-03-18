@@ -66,30 +66,30 @@ foreach ($data as $location => $locationData) {
     $data[$location]['labels'] =  implode(',', $data[$location]['labels']);
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
 
 ?>
 
 <nav aria-label="..." style="margin-top: 16px;">
   <ul class="pagination justify-content-center">
-    <li class="page-item<?php if ($year == 2020 && $month == 9 && $day == 7) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $yesterday); ?>">&laquo;</a></li>
+    <li class="page-item<?php if ($year == 2020 && $month == 9 && $day == 7) { echo ' disabled'; } ?>"><a class="page-link" href="/browse/<?php echo date('Y/n/j', $yesterday); ?>">&laquo;</a></li>
 <?php for ($i = $day_start - 172800; $i < $day_start; $i += 86400) { ?>
-    <li class="page-item<?php if ($i < mktime(6, 0, 0, 9, 7, 2020)) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
+    <li class="page-item<?php if ($i < mktime(6, 0, 0, 9, 7, 2020)) { echo ' disabled'; } ?>"><a class="page-link" href="/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
 <?php } ?>
-    <li class="page-item active"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $day_start); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $day_start))), 0, 1) . ' ' . date('n/j', $day_start); ?></a></li>
+    <li class="page-item active"><a class="page-link" href="/browse/<?php echo date('Y/n/j', $day_start); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $day_start))), 0, 1) . ' ' . date('n/j', $day_start); ?></a></li>
 <?php for ($i = $day_start + 86400; $i <= $day_start + 172800; $i += 86400) { ?>
-    <li class="page-item<?php if ($i > time()) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
+    <li class="page-item<?php if ($i > time()) { echo ' disabled'; } ?>"><a class="page-link" href="/browse/<?php echo date('Y/n/j', $i); ?>"><?php echo substr(str_replace('Thu', 'R', str_replace('Sun', 'U', date('D', $i))), 0, 1) . ' ' . date('n/j', $i); ?></a></li>
 <?php } ?>
-    <li class="page-item<?php if ($today || $day_start + 86400 > time()) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo date('Y/n/j', $tomorrow); ?>">&raquo;</a></li>
+    <li class="page-item<?php if ($today || $day_start + 86400 > time()) { echo ' disabled'; } ?>"><a class="page-link" href="/browse/<?php echo date('Y/n/j', $tomorrow); ?>">&raquo;</a></li>
   </ul>
 </nav>
 
   <div style="width: 100%; height: calc(100% - 126px);">
     <canvas id="chart"></canvas>
   </div>
-  <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
-  <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
-  <script src="/cliffs-tracker/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
+  <script src="/node_modules/moment/min/moment.min.js"></script>
+  <script src="/node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
   <script>
       var ctx = document.getElementById('chart');
       var myLineChart = new Chart(ctx, {

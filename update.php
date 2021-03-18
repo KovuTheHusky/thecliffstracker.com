@@ -3,7 +3,7 @@
 date_default_timezone_set('America/New_York');
 
 //$db = new PDO('sqlite:db.sqlite');
-$db = new PDO('sqlite:/var/www/html/cliffs-tracker/db.sqlite');
+$db = new PDO('sqlite:/var/www/thecliffstracker.com/db.sqlite');
 
 $db->exec('CREATE TABLE IF NOT EXISTS data (
     location TEXT, 

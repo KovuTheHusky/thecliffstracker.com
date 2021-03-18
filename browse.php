@@ -18,17 +18,17 @@ $month = 0;
 
 $db = new PDO('sqlite:db.sqlite');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
 
 ?>
 
 <nav aria-label="..." style="margin-top: 16px;">
   <ul class="pagination justify-content-center">
-    <li class="page-item<?php if ($year <= 2020) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo $year - 1; ?>">&laquo;</a></li>
+    <li class="page-item<?php if ($year <= 2020) { echo ' disabled'; } ?>"><a class="page-link" href="/browse/<?php echo $year - 1; ?>">&laquo;</a></li>
 <?php for ($i = '2020'; $i <= date('Y'); ++$i) { ?>
-    <li class="page-item<?php if ($i == $year) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo $i; ?>"><?php echo $i; ?></a></li>
+    <li class="page-item<?php if ($i == $year) { echo ' active'; } ?>"><a class="page-link" href="/browse/<?php echo $i; ?>"><?php echo $i; ?></a></li>
 <?php } ?>
-    <li class="page-item<?php if ($year >= date('Y')) { echo ' disabled'; } ?>"><a class="page-link" href="/cliffs-tracker/browse/<?php echo $year + 1; ?>">&raquo;</a></li>
+    <li class="page-item<?php if ($year >= date('Y')) { echo ' disabled'; } ?>"><a class="page-link" href="/browse/<?php echo $year + 1; ?>">&raquo;</a></li>
   </ul>
 </nav>
 
@@ -76,7 +76,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
             $valid = true;
         }
 
-        if ($valid) {?> <div class="col <?php echo $class; ?>"><a href="/cliffs-tracker/browse/<?php echo $year; ?>/<?php echo $month; ?>/<?php echo $day; ?>"><?php echo $day; ?></a></div> <?php } else {?> <div class="col <?php echo $class; ?>"><?php echo $day; ?></div> <?php }
+        if ($valid) {?> <div class="col <?php echo $class; ?>"><a href="/browse/<?php echo $year; ?>/<?php echo $month; ?>/<?php echo $day; ?>"><?php echo $day; ?></a></div> <?php } else {?> <div class="col <?php echo $class; ?>"><?php echo $day; ?></div> <?php }
 
         if ($pos == 0) {
             echo '</div><div class="row g-0 mb-1">';

@@ -66,30 +66,30 @@ foreach ($data as $location => $locationData) {
     $data[$location]['labels'] =  implode(',', $data[$location]['labels']);
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/cliffs-tracker/includes/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
 
 ?>
 
 <nav aria-label="..." style="margin-top: 16px;">
   <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link" href="/cliffs-tracker/average/<?php echo $weekday - 1 < 0 ? 6 : $weekday - 1; ?>">&laquo;</a></li>
-    <li class="page-item<?php if ($weekday == 0) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/0">U</a></li>
-    <li class="page-item<?php if ($weekday == 1) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/1">M</a></li>
-    <li class="page-item<?php if ($weekday == 2) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/2">T</a></li>
-    <li class="page-item<?php if ($weekday == 3) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/3">W</a></li>
-    <li class="page-item<?php if ($weekday == 4) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/4">R</a></li>
-    <li class="page-item<?php if ($weekday == 5) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/5">F</a></li>
-    <li class="page-item<?php if ($weekday == 6) { echo ' active'; } ?>"><a class="page-link" href="/cliffs-tracker/average/6">S</a></li>
-    <li class="page-item"><a class="page-link" href="/cliffs-tracker/average/<?php echo $weekday + 1 > 6 ? 0 : $weekday + 1; ?>">&raquo;</a></li>
+    <li class="page-item"><a class="page-link" href="/average/<?php echo $weekday - 1 < 0 ? 6 : $weekday - 1; ?>">&laquo;</a></li>
+    <li class="page-item<?php if ($weekday == 0) { echo ' active'; } ?>"><a class="page-link" href="/average/0">U</a></li>
+    <li class="page-item<?php if ($weekday == 1) { echo ' active'; } ?>"><a class="page-link" href="/average/1">M</a></li>
+    <li class="page-item<?php if ($weekday == 2) { echo ' active'; } ?>"><a class="page-link" href="/average/2">T</a></li>
+    <li class="page-item<?php if ($weekday == 3) { echo ' active'; } ?>"><a class="page-link" href="/average/3">W</a></li>
+    <li class="page-item<?php if ($weekday == 4) { echo ' active'; } ?>"><a class="page-link" href="/average/4">R</a></li>
+    <li class="page-item<?php if ($weekday == 5) { echo ' active'; } ?>"><a class="page-link" href="/average/5">F</a></li>
+    <li class="page-item<?php if ($weekday == 6) { echo ' active'; } ?>"><a class="page-link" href="/average/6">S</a></li>
+    <li class="page-item"><a class="page-link" href="/average/<?php echo $weekday + 1 > 6 ? 0 : $weekday + 1; ?>">&raquo;</a></li>
   </ul>
 </nav>
 
   <div style="width: 100%; height: calc(100% - 126px);">
     <canvas id="chart"></canvas>
   </div>
-  <script src="/cliffs-tracker/node_modules/moment/min/moment.min.js"></script>
-  <script src="/cliffs-tracker/node_modules/chart.js/dist/Chart.min.js"></script>
-  <script src="/cliffs-tracker/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
+  <script src="/node_modules/moment/min/moment.min.js"></script>
+  <script src="/node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
   <script>
       var ctx = document.getElementById('chart');
       var myLineChart = new Chart(ctx, {
