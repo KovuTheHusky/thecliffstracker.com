@@ -12,3 +12,10 @@
   color: #ffffff;
   border-radius: .25rem !important;
 }
+
+@media (max-width: 575px) {
+  ul.pagination li:not(:first-child):not(:last-child) {
+    font-size: 0.75rem;
+    line-height: 2;
+  }
+}
