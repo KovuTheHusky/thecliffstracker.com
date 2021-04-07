@@ -46,7 +46,7 @@ while (true) {
         $time = strtotime($time[1]);
         if ($key == 'DUM') { // slow skip partial months for dumbo
             $closing = mktime(0, 0, 0, 11, 2, 2020);
-            $opening = mktime(0, 0, 0, 4, 19, 2021);
+            $opening = mktime(0, 0, 0, 4, 16, 2021);
             if ($time > $closing && $time < $opening) {
                 continue;
             }
