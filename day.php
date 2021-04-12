@@ -87,9 +87,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
   <div style="width: 100%; height: calc(100% - 126px);">
     <canvas id="chart"></canvas>
   </div>
+  <script src="/node_modules/chart.js/dist/chart.min.js"></script>
   <script src="/node_modules/moment/min/moment.min.js"></script>
-  <script src="/node_modules/chart.js/dist/Chart.min.js"></script>
-  <script src="/node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js"></script>
+  <script src="/node_modules/chartjs-adapter-moment/dist/chartjs-adapter-moment.min.js"></script>
+  <script src="/node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"></script>
   <script>
       var ctx = document.getElementById('chart');
       var myLineChart = new Chart(ctx, {
@@ -164,14 +165,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
               ]
           },
           options: {
+              plugins: {
               annotation: {
                   annotations: [
 <?php if (isset($data['DUM']['data'])) { ?>
                       {
                           id: 'dumbo',
                           type: 'line',
-                          mode: 'horizontal',
-                          scaleID: 'y-axis-0',
+                          drawTime: 'beforeDatasetsDraw',
+                          scaleID: 'y',
                           value: <?php echo $capacities['DUM']; ?>,
                           borderColor: 'rgba(255, 0, 0, 0.1)',
                           borderWidth: 3,
@@ -186,8 +188,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       {
                           id: 'harlem',
                           type: 'line',
-                          mode: 'horizontal',
-                          scaleID: 'y-axis-0',
+                          drawTime: 'beforeDatasetsDraw',
+                          scaleID: 'y',
                           value: <?php echo $capacities['HLM']; ?>,
                           borderColor: 'rgba(0, 255, 255, 0.1)',
                           borderWidth: 3,
@@ -202,8 +204,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       {
                           id: 'lic',
                           type: 'line',
-                          mode: 'horizontal',
-                          scaleID: 'y-axis-0',
+                          drawTime: 'beforeDatasetsDraw',
+                          scaleID: 'y',
                           value: <?php echo $capacities['LIC']; ?>,
                           borderColor: 'rgba(0, 255, 0, 0.1)',
                           borderWidth: 3,
@@ -218,8 +220,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       {
                           id: 'valhalla',
                           type: 'line',
-                          mode: 'horizontal',
-                          scaleID: 'y-axis-0',
+                          drawTime: 'beforeDatasetsDraw',
+                          scaleID: 'y',
                           value: <?php echo $capacities['VAL']; ?>,
                           borderColor: 'rgba(255, 165, 0, 0.1)',
                           borderWidth: 3,
@@ -234,8 +236,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       {
                           id: 'callowhill',
                           type: 'line',
-                          mode: 'horizontal',
-                          scaleID: 'y-axis-0',
+                          drawTime: 'beforeDatasetsDraw',
+                          scaleID: 'y',
                           value: <?php echo $capacities['CAL']; ?>,
                           borderColor: 'rgba(255, 0, 255, 0.1)',
                           borderWidth: 3,
@@ -250,8 +252,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       {
                           id: 'vline',
                           type: 'line',
-                          mode: 'vertical',
-                          scaleID: 'x-axis-0',
+                          scaleID: 'x',
                           value: new Date(),
                           borderColor: 'black',
                           borderWidth: 3,
@@ -263,6 +264,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       }
 <?php } ?>
                   ]
+              }
               },
               elements: {
                   point: {
@@ -273,18 +275,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
               responsive: true,
               maintainAspectRatio: false,
               scales: {
-                  xAxes: [{
+                  x: {
                       type: 'time',
                       time: {
                           unit: 'hour'
                       }
-                  }],
-                  yAxes: [{
+                  },
+                  y: {
                       ticks: {
                         suggestedMin: 0,
                         suggestedMax: <?php echo $capacity; ?>
                       }
-                  }]
+                  }
               }
           }
       });
