@@ -111,7 +111,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                           {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(255, 0, 0)',
-                      backgroundColor: 'rgba(255, 0, 0, 0.1)'
+                      backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                      tension: 0.5
                   },
 <?php } ?>
 <?php if (isset($data['HLM']['data'])) { ?>
@@ -123,7 +124,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                           {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(0, 255, 255)',
-                      backgroundColor: 'rgba(0, 255, 255, 0.1)'
+                      backgroundColor: 'rgba(0, 255, 255, 0.1)',
+                      tension: 0.5
                   },
 <?php } ?>
 <?php if (isset($data['LIC']['data'])) { ?>
@@ -135,7 +137,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                           {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(0, 255, 0)',
-                      backgroundColor: 'rgba(0, 255, 0, 0.1)'
+                      backgroundColor: 'rgba(0, 255, 0, 0.1)',
+                      tension: 0.5
                   },
 <?php } ?>
 <?php if (isset($data['VAL']['data'])) { ?>
@@ -147,7 +150,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                           {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(255, 165, 0)',
-                      backgroundColor: 'rgba(255, 165, 0, 0.1)'
+                      backgroundColor: 'rgba(255, 165, 0, 0.1)',
+                      tension: 0.5
                   },
 <?php } ?>
 <?php if (isset($data['CAL']['data'])) { ?>
@@ -159,7 +163,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                           {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
                         ],
                       borderColor: 'rgb(255, 0, 255)',
-                      backgroundColor: 'rgba(255, 0, 255, 0.1)'
+                      backgroundColor: 'rgba(255, 0, 255, 0.1)',
+                      tension: 0.5
                   },
 <?php } ?>
               ]
