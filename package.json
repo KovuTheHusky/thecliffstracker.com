@@ -3,7 +3,7 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0-beta3",
     "bootstrap-icons": "^1.4.1",
-    "chart.js": "^3.1.1",
+    "chart.js": "^3.2.0",
     "chartjs-adapter-moment": "^1.0.0",
     "chartjs-plugin-annotation": "^1.0.1",
     "jquery": "^3.6.0",
