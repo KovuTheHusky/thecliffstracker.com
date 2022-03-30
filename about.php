@@ -16,7 +16,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
 
 <p>The Cliffs Tracker is an open-source PHP project that queries <a href="https://thecliffsclimbing.com">The Cliffs</a> website for the current amount of climbers at each gym and logs it to a SQLite database. Then that information is exposed via charts and graphs on this website.</p>
 
-<p>If you would like to help out please feel free to open <a href="https://github.com/KovuTheHusky/The-Cliffs-Tracker/issues">issues</a> or <a href="https://github.com/KovuTheHusky/The-Cliffs-Tracker">fork us on GitHub</a> and open a <a href="https://github.com/KovuTheHusky/The-Cliffs-Tracker/pulls">pull request</a>.</p>
+<p>If you would like to help out please feel free to open <a href="https://github.com/KovuTheHusky/thecliffstracker.com/issues">issues</a> or <a href="https://github.com/KovuTheHusky/thecliffstracker.com">fork us on GitHub</a> and open a <a href="https://github.com/KovuTheHusky/thecliffstracker.com/pulls">pull request</a>.</p>
 
 <h1 style="margin: 16px 0;">License</h1>
 

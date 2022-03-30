@@ -5,5 +5,5 @@ Occupancy tracker script and website for The Cliffs climbing and fitness gyms (D
 ## Links
 
 * Website: <https://thecliffstracker.com>
-* Issues: <https://github.com/KovuTheHusky/The-Cliffs-Tracker/issues>
-* Source: <https://github.com/KovuTheHusky/The-Cliffs-Tracker>
+* Issues: <https://github.com/KovuTheHusky/thecliffstracker.com/issues>
+* Source: <https://github.com/KovuTheHusky/thecliffstracker.com>
