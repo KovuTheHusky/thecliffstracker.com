@@ -7,7 +7,11 @@ date_default_timezone_set('America/New_York');
 $locations = array('DUM', 'GOW', 'HLM', 'LIC', 'VAL', 'CAL');
 
 $weekday = (int) $_GET['weekday'];
-$start = mktime(6, 0, 0, 9, 6 + $weekday, 2020);
+$delta = $weekday - date('w');
+if ($delta >= 0) {
+    $delta -= 7;
+}
+$start = mktime(6, 0, 0, date('n'), date('j') + $delta - 28, date('Y'));
 $end = $start + 64800;
 
 $db = new PDO('sqlite:db.sqlite');
@@ -25,6 +29,7 @@ foreach ($locations as $location) {
 $capacity = 170;
 $capacities = array(
     'DUM' => 60,
+    'GOW' => 50,
     'HLM' => 98,
     'LIC' => 139,
     'VAL' => 52,
