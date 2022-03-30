@@ -4,7 +4,7 @@ $page = 'average';
 
 date_default_timezone_set('America/New_York');
 
-$locations = array('DUM', 'HLM', 'LIC', 'VAL', 'CAL');
+$locations = array('DUM', 'GOW', 'HLM', 'LIC', 'VAL', 'CAL');
 
 $weekday = (int) $_GET['weekday'];
 $start = mktime(6, 0, 0, 9, 6 + $weekday, 2020);
@@ -115,6 +115,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       tension: 0.5
                   },
 <?php } ?>
+<?php if (isset($data['GOW']['data'])) { ?>
+                  {
+                      label: 'Gowanus',
+                      data: [
+                          {x: new Date('<?php echo date('r', mktime(6, 0, 0)); ?>'), y: 0},
+                          <?php echo $data['GOW']['data']; ?>,
+                          {x: new Date('<?php echo date('r', mktime(24, 0, 0)); ?>'), y: 0}
+                        ],
+                      borderColor: 'rgb(0, 0, 255)',
+                      backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                      tension: 0.5
+                  },
+<?php } ?>
 <?php if (isset($data['HLM']['data'])) { ?>
                   {
                       label: 'Harlem',
@@ -184,6 +197,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                           label: {
                               backgroundColor: 'rgb(255, 0, 0)',
                               content: 'DUMBO',
+                              enabled: true
+                          }
+                      },
+                      {
+                          id: 'gowanus',
+                          type: 'line',
+                          drawTime: 'beforeDatasetsDraw',
+                          scaleID: 'y',
+                          value: <?php echo $capacities['GOW']; ?>,
+                          borderColor: 'rgba(0, 0, 255, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(0, 0, 255)',
+                              content: 'Gowanus',
                               enabled: true
                           }
                       },

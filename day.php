@@ -114,6 +114,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                       backgroundColor: 'rgba(255, 0, 0, 0.1)'
                   },
 <?php } ?>
+<?php if (isset($data['GOW']['data'])) { ?>
+                  {
+                      label: 'Gowanus',
+                      data: [
+                          {x: new Date('<?php echo date('r', $day_start); ?>'), y: null}, 
+                          <?php echo $data['GOW']['data']; ?>,
+                          {x: new Date('<?php echo date('r', $day_end); ?>'), y: null}
+                        ],
+                      borderColor: 'rgb(0, 0, 255)',
+                      backgroundColor: 'rgba(0, 0, 255, 0.1)'
+                  },
+<?php } ?>
 <?php if (isset($data['HLM']['data'])) { ?>
                   {
                       label: 'Harlem',
@@ -180,6 +192,22 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php');
                           label: {
                               backgroundColor: 'rgb(255, 0, 0)',
                               content: 'DUMBO',
+                              enabled: true
+                          }
+                      },
+<?php } ?>
+<?php if (isset($data['GOW']['data'])) { ?>
+                      {
+                          id: 'gowanus',
+                          type: 'line',
+                          drawTime: 'beforeDatasetsDraw',
+                          scaleID: 'y',
+                          value: <?php echo $capacities['GOW']; ?>,
+                          borderColor: 'rgba(0, 0, 255, 0.1)',
+                          borderWidth: 3,
+                          label: {
+                              backgroundColor: 'rgb(0, 0, 255)',
+                              content: 'Gowanus',
                               enabled: true
                           }
                       },
