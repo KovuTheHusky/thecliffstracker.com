@@ -45,8 +45,8 @@ while (true) {
         preg_match('/\((.*)\)/', $val->lastUpdate, $time);
         $time = strtotime($time[1]);
         if ($key == 'DUM') { // slow skip partial months for dumbo
-            $closing = mktime(0, 0, 0, 11, 2, 2020);
-            $opening = mktime(0, 0, 0, 4, 16, 2021);
+            $closing = mktime(0, 0, 0, 11, 1, 2021);
+            $opening = mktime(0, 0, 0, 4, 15, 2022);
             if ($time > $closing && $time < $opening) {
                 continue;
             }
