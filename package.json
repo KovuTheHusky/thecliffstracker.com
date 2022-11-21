@@ -4,7 +4,7 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.10.2",
     "chart.js": "^3.9.1",
-    "chartjs-adapter-moment": "^1.0.0",
+    "chartjs-adapter-moment": "^1.0.1",
     "chartjs-plugin-annotation": "^2.1.0",
     "jquery": "^3.6.1",
     "moment": "^2.29.4"
