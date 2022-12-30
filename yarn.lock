@@ -34,10 +34,10 @@ chartjs-adapter-moment@^1.0.1:
   resolved "https://registry.yarnpkg.com/chartjs-adapter-moment/-/chartjs-adapter-moment-1.0.1.tgz#0f04c30d330b207c14bfb57dfaae9ce332f09102"
   integrity sha512-Uz+nTX/GxocuqXpGylxK19YG4R3OSVf8326D+HwSTsNw1LgzyIGRo+Qujwro1wy6X+soNSnfj5t2vZ+r6EaDmA==
 
-chartjs-plugin-annotation@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/chartjs-plugin-annotation/-/chartjs-plugin-annotation-2.1.0.tgz#c43172d26ec8e7e3bc104932d1a1807bf0c46db7"
-  integrity sha512-wHxP6mBWrgdldAEbHM5nMaMJ3PuunXgiotVh8natosuZsEqpjU0ZeyvMTBwIkKXLSDncb3faLunl4BI89Vmj/g==
+chartjs-plugin-annotation@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/chartjs-plugin-annotation/-/chartjs-plugin-annotation-2.1.1.tgz#686865387d8e81130dfd81437cc4a70145df7a98"
+  integrity sha512-RVKfwNpecvVZdEUshqk9RtqjwVn9koehQBiz1ZWclgFOVayr2CSTENI6VqsyjuYtzBTFEX6Qark7SqYtnwNiAA==
 
 jquery@^3.6.3:
   version "3.6.3"
