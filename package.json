@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.0",
+    "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
     "chart.js": "^4.3.1",
     "chartjs-adapter-moment": "^1.0.1",
