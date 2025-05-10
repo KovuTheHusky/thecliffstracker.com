@@ -15,8 +15,8 @@ importers:
         specifier: ^5.3.6
         version: 5.3.6(@popperjs/core@2.11.8)
       bootstrap-icons:
-        specifier: ^1.12.1
-        version: 1.12.1
+        specifier: ^1.13.0
+        version: 1.13.0
       chart.js:
         specifier: ^4.4.9
         version: 4.4.9
@@ -41,8 +41,8 @@ packages:
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
-  bootstrap-icons@1.12.1:
-    resolution: {integrity: sha512-ekwupjsteHQmgGV+haQ0nNMoSyKCbJj5ou+06vFzb9uR2/bwN9isNEgXBaQzcT+fLzhKS3OaBNpwz8XdZlIgYQ==}
+  bootstrap-icons@1.13.0:
+    resolution: {integrity: sha512-GrQFQHRK2ZPeid7niIAaQb0bJhWB0P8aHAztp9dN+p+4eIX/DJxahLlt0jhov1ZSGfvF++LrltUmUC/eQ/B67A==}
 
   bootstrap@5.3.6:
     resolution: {integrity: sha512-jX0GAcRzvdwISuvArXn3m7KZscWWFAf1MKBcnzaN02qWMb3jpMoUX4/qgeiGzqyIb4ojulRzs89UCUmGcFSzTA==}
@@ -76,7 +76,7 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  bootstrap-icons@1.12.1: {}
+  bootstrap-icons@1.13.0: {}
 
   bootstrap@5.3.6(@popperjs/core@2.11.8):
     dependencies:
