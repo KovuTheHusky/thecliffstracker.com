@@ -1,4 +1,4 @@
-# thecliffstracker.com [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+# thecliffstracker.com [![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 
 Occupancy tracker script and website for The Cliffs climbing and fitness gyms (DUMBO, Gowanus, Harlem, LIC, Valhalla, and Callowhill).
 
