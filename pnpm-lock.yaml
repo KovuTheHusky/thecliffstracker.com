@@ -18,14 +18,14 @@ importers:
         specifier: ^1.13.2
         version: 1.13.2
       chart.js:
-        specifier: ^4.5.1
-        version: 4.5.1
+        specifier: ^4.6.2
+        version: 4.6.2
       chartjs-adapter-moment:
         specifier: ^1.0.1
-        version: 1.0.1(chart.js@4.5.1)(moment@2.31.0)
+        version: 1.0.1(chart.js@4.6.2)(moment@2.31.0)
       chartjs-plugin-annotation:
         specifier: ^3.1.0
-        version: 3.1.0(chart.js@4.5.1)
+        version: 3.1.0(chart.js@4.6.2)
       jquery:
         specifier: ^4.0.0
         version: 4.0.0
@@ -35,8 +35,8 @@ importers:
 
 packages:
 
-  '@kurkle/color@0.3.4':
-    resolution: {integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==}
+  '@kurkle/color@0.6.6':
+    resolution: {integrity: sha512-Bd1NjGyoe27ExXRIBu13YymFP6k/wFxpUkX97Z3RlofLFV43nECB2G8vETZzcZzz2Ct2oRzwYElX65lxyi5UNg==}
 
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
@@ -49,9 +49,9 @@ packages:
     peerDependencies:
       '@popperjs/core': ^2.11.8
 
-  chart.js@4.5.1:
-    resolution: {integrity: sha512-GIjfiT9dbmHRiYi6Nl2yFCq7kkwdkp1W/lp2J99rX0yo9tgJGn3lKQATztIjb5tVtevcBtIdICNWqlq5+E8/Pw==}
-    engines: {pnpm: '>=8'}
+  chart.js@4.6.2:
+    resolution: {integrity: sha512-xachB+pPHjp0syJi7llUBA1w3kMYl6NF3o7eVrvjnWCT+IB2zMaF2pX5UYDiwbbfsioFEIRnAjreNOMsGj5TIA==}
+    engines: {pnpm: '>=12'}
 
   chartjs-adapter-moment@1.0.1:
     resolution: {integrity: sha512-Uz+nTX/GxocuqXpGylxK19YG4R3OSVf8326D+HwSTsNw1LgzyIGRo+Qujwro1wy6X+soNSnfj5t2vZ+r6EaDmA==}
@@ -72,7 +72,7 @@ packages:
 
 snapshots:
 
-  '@kurkle/color@0.3.4': {}
+  '@kurkle/color@0.6.6': {}
 
   '@popperjs/core@2.11.8': {}
 
@@ -82,18 +82,18 @@ snapshots:
     dependencies:
       '@popperjs/core': 2.11.8
 
-  chart.js@4.5.1:
+  chart.js@4.6.2:
     dependencies:
-      '@kurkle/color': 0.3.4
+      '@kurkle/color': 0.6.6
 
-  chartjs-adapter-moment@1.0.1(chart.js@4.5.1)(moment@2.31.0):
+  chartjs-adapter-moment@1.0.1(chart.js@4.6.2)(moment@2.31.0):
     dependencies:
-      chart.js: 4.5.1
+      chart.js: 4.6.2
       moment: 2.31.0
 
-  chartjs-plugin-annotation@3.1.0(chart.js@4.5.1):
+  chartjs-plugin-annotation@3.1.0(chart.js@4.6.2):
     dependencies:
-      chart.js: 4.5.1
+      chart.js: 4.6.2
 
   jquery@4.0.0: {}
 
